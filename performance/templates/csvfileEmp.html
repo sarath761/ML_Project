@@ -1,0 +1,161 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css1/csvfileEmp.css' %}">
+<div class="container-div-main">
+	<div class="container">
+		<div class="card">
+			<h3>Employee List</h3>
+			<div class="drop_box">
+
+				<p>Files Supported: Csvfiles Only</p>
+				<form id="example-form1" action="/users_csv/" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+
+					<div align="center">
+						<div class='file-input'>
+							<input type="file" class="" id="customFile1" name="csv_file" required accept=".csv"
+								size="60">
+
+							<span class='button'>Choose</span>
+							<span class="label" id="data-js-label1"></label>
+						</div>
+						<input type="submit" class="btn1" value="Submit">
+					</div>
+					<script>
+						// Get the file input element
+						var fileInput = document.getElementById("customFile1");
+						var labelname = document.getElementById("data-js-label1");
+
+						// Listen for the change event
+						fileInput.addEventListener("change", function () {
+							// Check if files are selected
+							if (fileInput.files.length > 0) {
+								// Get the first selected file
+								var file = fileInput.files[0];
+
+								// Get the filename
+								var fileName = file.name;
+
+								// Display the filename or do something with it
+								console.log("Selected filename: " + fileName);
+								labelname.innerHTML = fileName;
+							} else {
+								console.log("No file selected.");
+							}
+						});
+					</script>
+				</form>
+				<!-- <input type="file" hidden accept=".doc,.docx,.pdf,.csv" id="fileID" style="display:none;">
+        	<button class="btn1">Choose File</button>  -->
+			</div>
+
+		</div>
+	</div>
+
+	<!-- 
+<div class="container">
+  <div class="card">
+    <h3>Project List</h3>
+    <div class="drop_box">
+
+      <p>Files Supported: Csvfiles Only</p>
+      <form id="example-form1" action="project_list" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div align="center">
+          <div class='file-input'>
+            <input type="file" class="" id="customFile2" name="document" required accept=".csv" size="60">
+
+            <span class='button'>Choose</span>
+            <span class="label" id="data-js-label2"></label>
+          </div>
+          <input type="submit" class="btn1" value="Submit">
+        </div>
+        <script>
+         // Get the file input element
+         var fileInput1 = document.getElementById("customFile2");
+         var labelname1 = document.getElementById("data-js-label2");
+
+         // Listen for the change event
+         fileInput1.addEventListener("change", function () {
+           // Check if files are selected
+           if (fileInput1.files.length > 0) {
+             // Get the first selected file
+             var file = fileInput1.files[0];
+
+             // Get the filename
+             var fileName1 = file.name;
+
+             // Display the filename or do something with it
+             console.log("Selected filename: " + fileName1);
+             labelname1.innerHTML=fileName1;
+           } else {
+             console.log("No file selected.");
+           }
+         });
+        </script>
+      </form>
+       <input type="file" hidden accept=".doc,.docx,.pdf,.csv" id="fileID" style="display:none;">
+          <button class="btn1">Choose File</button> 
+    </div>
+
+  </div>
+
+
+  <div class="container">
+    <div class="card">
+      <h3>Project List</h3>
+      <div class="drop_box">
+  
+        <p>Files Supported: Csvfiles Only</p>
+        <form id="example-form1" action="{% url 'upload_file' %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+  
+          <div align="center">
+            <div class='file-input'>
+              <input type="file" class="" id="customFile3" name="document" required accept=".csv" size="60">
+  
+              <span class='button'>Choose</span>
+              <span class="label" id="data-js-label3"></label>
+            </div>
+            <input type="submit" class="btn1" value="Submit">
+          </div>
+          <script>
+           // Get the file input element
+           var fileInput1 = document.getElementById("customFile3");
+           var labelname1 = document.getElementById("data-js-label3");
+  
+           // Listen for the change event
+           fileInput1.addEventListener("change", function () {
+             // Check if files are selected
+             if (fileInput1.files.length > 0) {
+               // Get the first selected file
+               var file = fileInput1.files[0];
+  
+               // Get the filename
+               var fileName1 = file.name;
+  
+               // Display the filename or do something with it
+               console.log("Selected filename: " + fileName1);
+               labelname1.innerHTML=fileName1;
+             } else {
+               console.log("No file selected.");
+             }
+           });
+          </script>
+        </form>
+         <input type="file" hidden accept=".doc,.docx,.pdf,.csv" id="fileID" style="display:none;">
+            <button class="btn1">Choose File</button> 
+      </div>
+  
+    </div>
+</div> -->
+
+
+
+
+
+</div>
+{% endblock %}

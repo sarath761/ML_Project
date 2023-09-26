@@ -1,0 +1,45 @@
+{% extends 'dash-content.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="{% static 'css1/employee_list.css' %}">
+
+<section class="intro">
+    
+    <div class="bg-image h-100" style="background-color:none;">
+      <div class="mask d-flex align-items-center h-100" style="background-color: none !important;">
+        <div class="container" >
+          <div class="row justify-content-center">
+            <div class="col-12" style="padding-left: 0px;">
+              <div class="card">
+                <div class="card-body p-0">
+                  <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="false" >
+                    <table class="table table-striped mb-0">
+                      <thead>
+                        <tr >
+                          <th scope="col" style="background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e) !important; color: white;">Index</th>
+                          <th scope="col" style="background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e) !important; color: white;">Employee Name</th>
+                          <h1 style="font-family: 'Poppins' ,sans-serif !important;">Employee-List</h1>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for employee in employees %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ employee.employee_name }}</td>
+                            </tr>
+                        {% endfor %}
+                       
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
